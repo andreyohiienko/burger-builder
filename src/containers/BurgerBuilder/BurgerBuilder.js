@@ -18,6 +18,7 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0,
     },
+    totalPrice: 4,
   }
 
   addIngredientHandler = (type) => {
@@ -62,7 +63,7 @@ class BurgerBuilder extends Component {
       ...this.state.ingredients,
     }
     for (let key in disableInfo) {
-      disableInfo[key] = disableInfo[key] <=0 
+      disableInfo[key] = disableInfo[key] <= 0
     }
     return (
       <Aux>
@@ -71,6 +72,7 @@ class BurgerBuilder extends Component {
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           disabled={disableInfo}
+          price={this.state.totalPrice}
         />
       </Aux>
     )
