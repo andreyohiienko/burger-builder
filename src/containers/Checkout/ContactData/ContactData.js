@@ -144,7 +144,7 @@ class ContactData extends Component {
         this.setState({ loading: false })
         this.props.history.push('/')
       })
-      .catch((response) => {
+      .catch((error) => {
         this.setState({ loading: false })
       })
   }
