@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
 }
 
-const reducer = (state = initialState, action) => {
+const orderReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.PURCHASE_BURGER_START:
       return {
@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        orders: state.orders.contact(newOrder),
+        orders: state.orders.concat(newOrder),
       }
     case actionTypes.PURCHASE_BURGER_FAIL:
       return { ...state, loading: false }
@@ -28,3 +28,5 @@ const reducer = (state = initialState, action) => {
       return state
   }
 }
+
+export default orderReducer
