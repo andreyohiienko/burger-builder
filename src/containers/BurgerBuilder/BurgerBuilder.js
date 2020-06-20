@@ -10,7 +10,7 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 import * as actions from '../../store/actions'
 import axios from '../../axios-orders'
-
+//test
 export class BurgerBuilder extends Component {
   state = {
     purchasing: false,
