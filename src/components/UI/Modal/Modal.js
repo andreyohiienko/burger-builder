@@ -3,34 +3,38 @@ import React from 'react'
 import classes from './Modal.module.css'
 import Aux from '../../../hoc/AuxHoc/AuxHoc'
 import Backdrop from '../Backdrop/Backdrop'
+import { useEffect } from 'react'
 
-const Modal = () => {
+const Modal = (props) => {
   // shouldComponentUpdate(nextProps, nextState) {
   //   return (
-  //     nextProps.show !== this.props.show ||
-  //     nextProps.children !== this.props.children
+  //     nextProps.show !== props.show ||
+  //     nextProps.children !== props.children
   //   )
   // }
+  useEffect(() => {
+    console.log('show', props.show)
+  }, [])
 
   return (
     <Aux>
-      <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+      <Backdrop show={props.show} clicked={props.modalClosed} />
       <div
         className={classes.Modal}
         style={{
-          transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-          opacity: this.props.show ? '1' : '0',
+          transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+          opacity: props.show ? '1' : '0',
         }}
       >
-        {this.props.children}
+        {props.children}
       </div>
     </Aux>
   )
 }
 
-export default React.memo(
-  Modal,
-  (prevProps, nextProps) =>
-    nextProps.show !== prevProps.show &&
-    nextProps.children !== prevProps.children,
-)
+export default React.memo(Modal, (prevProps, nextProps) => {
+  return (
+    nextProps.show === prevProps.show &&
+    nextProps.children === prevProps.children
+  )
+})
