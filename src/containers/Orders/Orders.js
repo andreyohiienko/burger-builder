@@ -24,6 +24,8 @@ const Orders = (props) => {
     ))
   }
 
+  console.log('orders', orders)
+
   return <div>{orders}</div>
 }
 
